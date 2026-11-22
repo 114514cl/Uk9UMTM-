@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>p_R Archive</title>
+    <style>
+        /* 让 body 铺满整个屏幕，并设置为背景图 */
+        body {
+            margin: 0;
+            height: 100vh;
+            background-image: url('你的背景图.jpg'); /* 替换为你的背景图路径 */
+            background-size: cover;
+            background-position: center;
+            cursor: pointer; /* 鼠标变成小手，暗示可点击 */
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    // 监听整个页面的点击事件
+    document.body.addEventListener('click', function() {
+        // 1. 创建一个隐藏的 a 标签
+        const downloadLink = document.createElement('a');
+        
+        // 2. 设置文件路径（同源路径，例如同目录下的 fragment_36.31.txt）
+        downloadLink.href = './fragment_36.31.txt'; 
+        
+        // 3. 设置下载后的文件名
+        downloadLink.download = 'fragment_36.31.txt'; 
+        
+        // 4. 隐藏这个 a 标签（不显示在页面上）
+        downloadLink.style.display = 'none';
+        
+        // 5. 将 a 标签临时添加到页面中，然后模拟点击触发下载
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        
+        // 6. 下载触发后，立即移除 a 标签，清理 DOM
+        document.body.removeChild(downloadLink);
+    });
+</script>
+
+</body>
+</html>
